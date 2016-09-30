@@ -10,6 +10,8 @@
 		54544EF11D949F9500130B47 /* dniDateTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54544EE71D949F9500130B47 /* dniDateTime.framework */; };
 		54544EF61D949F9500130B47 /* dniDateTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54544EF51D949F9500130B47 /* dniDateTimeTests.swift */; };
 		54544EF81D949F9500130B47 /* dniDateTime.h in Headers */ = {isa = PBXBuildFile; fileRef = 54544EEA1D949F9500130B47 /* dniDateTime.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		54544F021D949FBA00130B47 /* dniDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54544F011D949FBA00130B47 /* dniDateTime.swift */; };
+		54D0542F1D9F07E90046A1B3 /* DniDateTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D0542E1D9F07E90046A1B3 /* DniDateTimeFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		54544EF01D949F9500130B47 /* dniDateTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dniDateTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54544EF51D949F9500130B47 /* dniDateTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dniDateTimeTests.swift; sourceTree = "<group>"; };
 		54544EF71D949F9500130B47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54544F011D949FBA00130B47 /* dniDateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dniDateTime.swift; sourceTree = "<group>"; };
+		54D0542E1D9F07E90046A1B3 /* DniDateTimeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DniDateTimeFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 			children = (
 				54544EEA1D949F9500130B47 /* dniDateTime.h */,
 				54544EEB1D949F9500130B47 /* Info.plist */,
+				54544F011D949FBA00130B47 /* dniDateTime.swift */,
+				54D0542E1D9F07E90046A1B3 /* DniDateTimeFormatter.swift */,
 			);
 			path = dniDateTime;
 			sourceTree = "<group>";
@@ -148,6 +154,7 @@
 				TargetAttributes = {
 					54544EE61D949F9500130B47 = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					54544EEF1D949F9500130B47 = {
@@ -196,6 +203,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54544F021D949FBA00130B47 /* dniDateTime.swift in Sources */,
+				54D0542F1D9F07E90046A1B3 /* DniDateTimeFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +329,7 @@
 		54544EFC1D949F9500130B47 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -331,6 +341,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = space.arbron.dniDateTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -338,6 +349,7 @@
 		54544EFD1D949F9500130B47 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -356,6 +368,7 @@
 		54544EFF1D949F9500130B47 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = dniDateTimeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = space.arbron.dniDateTimeTests;
@@ -367,6 +380,7 @@
 		54544F001D949F9500130B47 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = dniDateTimeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = space.arbron.dniDateTimeTests;
@@ -394,6 +408,7 @@
 				54544EFD1D949F9500130B47 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		54544EFE1D949F9500130B47 /* Build configuration list for PBXNativeTarget "dniDateTimeTests" */ = {
 			isa = XCConfigurationList;
@@ -402,6 +417,7 @@
 				54544F001D949F9500130B47 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
