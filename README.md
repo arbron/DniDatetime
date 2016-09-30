@@ -1,7 +1,7 @@
 # DniDateTime
 #### A D'ni Time Framework for MacOS & iOS
 
-Adapted from the D'ni clock app Gorayan created by Ellen Rock and Dane Wallinga.
+Adapted from the D'ni clock app [Gorayan](https://github.com/Fitzbattleaxe/DNi) created by [Ellen Rocket](https://plus.google.com/+EllenRockett) and [Dane Wallinga](https://plus.google.com/+DaneWallinga).
 
 ###### Links
 * [Cyan](http://cyan.com/)
