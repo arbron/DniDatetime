@@ -64,22 +64,33 @@ public class DniDateTime {
         }
     }
     
-    var timeInProrahntee = 0.0
-    var dateTime: Date {
-        didSet {
-            updateValues()
-        }
+    var dateTime: Date
+    
+    var timeInProrahntee: Double {
+        return dateTime.timeIntervalSinceReferenceDate.toProrahntee
     }
     
-    var prorahntee = 0
-    var gorahntee = 0
-    var tahvotee = 0
-    var pahrtahvotee = 0
+    var prorahntee: Int {
+        return Int(timeInProrahntee.truncatingRemainder(dividingBy: Units.gorahn.value)) + Units.prorahn.min
+    }
+    var gorahntee: Int {
+        return Int(timeInProrahntee.truncatingRemainder(dividingBy: Units.tahvo.value) / Units.gorahn.value) + Units.gorahn.min
+    }
+    var tahvotee: Int {
+        return Int(timeInProrahntee.truncatingRemainder(dividingBy: Units.pahrtahvo.value) / Units.tahvo.value) + Units.tahvo.min
+    }
+    var pahrtahvotee: Int {
+        return Int(timeInProrahntee.truncatingRemainder(dividingBy: Units.yahr.value) / Units.pahrtahvo.value) + Units.pahrtahvo.min
+    }
     var gahrtahvotee: Int {
         return self.pahrtahvotee / 5
     }
-    var yahrtee = 0
-    var vaileetee = 0
+    var yahrtee: Int {
+        return Int(timeInProrahntee.truncatingRemainder(dividingBy: Units.vailee.value) / Units.yahr.value) + Units.yahr.min
+    }
+    var vaileetee: Int {
+        return Int(timeInProrahntee.truncatingRemainder(dividingBy: Units.hahr.value) / Units.vailee.value) + Units.vailee.min
+    }
     var hahrtee: Int {
         return Int(timeInProrahntee / Units.hahr.value) + Units.hahr.min
     }
@@ -88,25 +99,12 @@ public class DniDateTime {
         return timeInProrahntee - Double(Int(timeInProrahntee))
     }
     
-    private func updateValues() {
-        timeInProrahntee = dateTime.timeIntervalSinceReferenceDate.toProrahntee
-        //hahrtee = Int(timeInProrahntee / Units.hahr.value) + Units.hahr.min
-        vaileetee = Int(timeInProrahntee.truncatingRemainder(dividingBy: Units.hahr.value) / Units.vailee.value) + Units.vailee.min
-        yahrtee = Int(timeInProrahntee.truncatingRemainder(dividingBy: Units.vailee.value) / Units.yahr.value) + Units.yahr.min
-        //gahrtahvotee = Int(timeInProrahntee.truncatingRemainder(dividingBy: Units.yahr.value) / Units.gahrtahvo.value) + Units.gahrtahvo.min
-        pahrtahvotee = Int(timeInProrahntee.truncatingRemainder(dividingBy: Units.yahr.value) / Units.pahrtahvo.value) + Units.pahrtahvo.min
-        tahvotee = Int(timeInProrahntee.truncatingRemainder(dividingBy: Units.pahrtahvo.value) / Units.tahvo.value) + Units.tahvo.min
-        gorahntee = Int(timeInProrahntee.truncatingRemainder(dividingBy: Units.tahvo.value) / Units.gorahn.value) + Units.gorahn.min
-        prorahntee = Int(timeInProrahntee.truncatingRemainder(dividingBy: Units.gorahn.value)) + Units.prorahn.min
-    }
-    
     init() {
         dateTime = Date()
     }
     
     init(withDate date: Date) {
         dateTime = date
-        updateValues()
     }
     
     convenience init(withHahr hahrtee: Int,
@@ -120,7 +118,6 @@ public class DniDateTime {
         prorahnteeTime += Double(gorahntee - Units.gorahn.min) * Units.gorahn.value
         prorahnteeTime += Double(tahvotee - Units.tahvo.min) * Units.tahvo.value
         prorahnteeTime += Double(pahrtahvotee - Units.pahrtahvo.min) * Units.pahrtahvo.value
-        //prorahnteeTime += Double(gahrtahvotee - Units.gahrtahvo.min) * Units.gahrtahvo.value
         prorahnteeTime += Double(yahrtee - Units.yahr.min) * Units.yahr.value
         prorahnteeTime += Double(vaileetee - Units.vailee.min) * Units.vailee.value
         prorahnteeTime += Double(hahrtee - Units.hahr.min) * Units.hahr.value
