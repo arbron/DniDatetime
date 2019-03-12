@@ -11,6 +11,7 @@
 		54544EF61D949F9500130B47 /* dniDateTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54544EF51D949F9500130B47 /* dniDateTimeTests.swift */; };
 		54544EF81D949F9500130B47 /* dniDateTime.h in Headers */ = {isa = PBXBuildFile; fileRef = 54544EEA1D949F9500130B47 /* dniDateTime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		54544F021D949FBA00130B47 /* dniDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54544F011D949FBA00130B47 /* dniDateTime.swift */; };
+		54697254223755AC008B376A /* dniDateTimeFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54697253223755AC008B376A /* dniDateTimeFormatterTests.swift */; };
 		54D0542F1D9F07E90046A1B3 /* DniDateTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D0542E1D9F07E90046A1B3 /* DniDateTimeFormatter.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		54544EF51D949F9500130B47 /* dniDateTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dniDateTimeTests.swift; sourceTree = "<group>"; };
 		54544EF71D949F9500130B47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54544F011D949FBA00130B47 /* dniDateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dniDateTime.swift; sourceTree = "<group>"; };
+		54697253223755AC008B376A /* dniDateTimeFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dniDateTimeFormatterTests.swift; sourceTree = "<group>"; };
 		54D0542E1D9F07E90046A1B3 /* DniDateTimeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DniDateTimeFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				54544EF51D949F9500130B47 /* dniDateTimeTests.swift */,
+				54697253223755AC008B376A /* dniDateTimeFormatterTests.swift */,
 				54544EF71D949F9500130B47 /* Info.plist */,
 			);
 			path = dniDateTimeTests;
@@ -154,11 +157,14 @@
 				TargetAttributes = {
 					54544EE61D949F9500130B47 = {
 						CreatedOnToolsVersion = 8.0;
-						LastSwiftMigration = 0800;
+						DevelopmentTeam = WY43EC959T;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					54544EEF1D949F9500130B47 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = WY43EC959T;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -213,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54544EF61D949F9500130B47 /* dniDateTimeTests.swift in Sources */,
+				54697254223755AC008B376A /* dniDateTimeFormatterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,8 +337,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = WY43EC959T;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -342,7 +350,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -352,6 +361,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = WY43EC959T;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -361,7 +371,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = space.arbron.dniDateTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -369,11 +380,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = WY43EC959T;
 				INFOPLIST_FILE = dniDateTimeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = space.arbron.dniDateTimeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -381,11 +394,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = WY43EC959T;
 				INFOPLIST_FILE = dniDateTimeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = space.arbron.dniDateTimeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

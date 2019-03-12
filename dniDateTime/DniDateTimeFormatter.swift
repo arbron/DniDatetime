@@ -31,15 +31,15 @@ public class DniDateTimeFormatter: Formatter {
     public func string(from date: DniDateTime) -> String {
         var dateComponent = ""
         if dateFormat == .full {
-            dateComponent = "\(date.hahrtee) \(DniDateTime.Vailee(rawValue: date.vaileetee)) \(date.yahrtee)"
+            dateComponent = "\(date.hahrtee) \(DniDateTime.Vailee(rawValue: date.vaileetee)!) \(date.yahrtee)"
         } else if dateFormat == .long {
             dateComponent = "\(date.hahrtee).\(date.vaileetee).\(date.yahrtee)"
         } else if dateFormat == .medium {
-            dateComponent = "\(DniDateTime.Vailee(rawValue: date.vaileetee)) \(date.yahrtee)"
+            dateComponent = "\(DniDateTime.Vailee(rawValue: date.vaileetee)!) \(date.yahrtee)"
         } else if dateFormat == .short {
             dateComponent = "\(date.vaileetee).\(date.yahrtee)"
         }
-        
+
         var timeComponent = ""
         if timeFormat == .full {
             timeComponent = "\(date.pahrtahvotee):\(date.tahvotee):\(date.gorahntee):\(date.prorahntee)"
@@ -50,8 +50,10 @@ public class DniDateTimeFormatter: Formatter {
         } else if timeFormat == .short {
             timeComponent = ""
         }
-        
-        return "\(dateComponent)\(dateTimeSeperator)\(timeComponent)"
+
+        let seperator = (dateComponent != "" && timeComponent != "") ? dateTimeSeperator : ""
+
+        return "\(dateComponent)\(seperator)\(timeComponent)"
     }
     /*
     
