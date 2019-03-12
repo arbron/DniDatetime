@@ -10,8 +10,11 @@
 		54544EF11D949F9500130B47 /* dniDateTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54544EE71D949F9500130B47 /* dniDateTime.framework */; };
 		54544EF61D949F9500130B47 /* dniDateTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54544EF51D949F9500130B47 /* dniDateTimeTests.swift */; };
 		54544EF81D949F9500130B47 /* dniDateTime.h in Headers */ = {isa = PBXBuildFile; fileRef = 54544EEA1D949F9500130B47 /* dniDateTime.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		54544F021D949FBA00130B47 /* dniDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54544F011D949FBA00130B47 /* dniDateTime.swift */; };
+		54544F021D949FBA00130B47 /* DniDateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54544F011D949FBA00130B47 /* DniDateTime.swift */; };
 		54697254223755AC008B376A /* dniDateTimeFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54697253223755AC008B376A /* dniDateTimeFormatterTests.swift */; };
+		5469725622375844008B376A /* DniDateTimeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5469725522375844008B376A /* DniDateTimeUnit.swift */; };
+		54697258223762AE008B376A /* DniDateTimeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54697257223762AE008B376A /* DniDateTimeComponent.swift */; };
+		5469725A22376575008B376A /* DniDateTimeComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5469725922376575008B376A /* DniDateTimeComponentTests.swift */; };
 		54D0542F1D9F07E90046A1B3 /* DniDateTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D0542E1D9F07E90046A1B3 /* DniDateTimeFormatter.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,8 +35,11 @@
 		54544EF01D949F9500130B47 /* dniDateTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dniDateTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54544EF51D949F9500130B47 /* dniDateTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dniDateTimeTests.swift; sourceTree = "<group>"; };
 		54544EF71D949F9500130B47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		54544F011D949FBA00130B47 /* dniDateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dniDateTime.swift; sourceTree = "<group>"; };
+		54544F011D949FBA00130B47 /* DniDateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DniDateTime.swift; sourceTree = "<group>"; };
 		54697253223755AC008B376A /* dniDateTimeFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dniDateTimeFormatterTests.swift; sourceTree = "<group>"; };
+		5469725522375844008B376A /* DniDateTimeUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DniDateTimeUnit.swift; sourceTree = "<group>"; };
+		54697257223762AE008B376A /* DniDateTimeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DniDateTimeComponent.swift; sourceTree = "<group>"; };
+		5469725922376575008B376A /* DniDateTimeComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DniDateTimeComponentTests.swift; sourceTree = "<group>"; };
 		54D0542E1D9F07E90046A1B3 /* DniDateTimeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DniDateTimeFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,8 +85,10 @@
 			children = (
 				54544EEA1D949F9500130B47 /* dniDateTime.h */,
 				54544EEB1D949F9500130B47 /* Info.plist */,
-				54544F011D949FBA00130B47 /* dniDateTime.swift */,
+				54544F011D949FBA00130B47 /* DniDateTime.swift */,
+				54697257223762AE008B376A /* DniDateTimeComponent.swift */,
 				54D0542E1D9F07E90046A1B3 /* DniDateTimeFormatter.swift */,
+				5469725522375844008B376A /* DniDateTimeUnit.swift */,
 			);
 			path = dniDateTime;
 			sourceTree = "<group>";
@@ -89,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				54544EF51D949F9500130B47 /* dniDateTimeTests.swift */,
+				5469725922376575008B376A /* DniDateTimeComponentTests.swift */,
 				54697253223755AC008B376A /* dniDateTimeFormatterTests.swift */,
 				54544EF71D949F9500130B47 /* Info.plist */,
 			);
@@ -152,7 +161,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Jeff Hitchcock";
 				TargetAttributes = {
 					54544EE61D949F9500130B47 = {
@@ -209,8 +218,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54544F021D949FBA00130B47 /* dniDateTime.swift in Sources */,
+				54697258223762AE008B376A /* DniDateTimeComponent.swift in Sources */,
+				54544F021D949FBA00130B47 /* DniDateTime.swift in Sources */,
 				54D0542F1D9F07E90046A1B3 /* DniDateTimeFormatter.swift in Sources */,
+				5469725622375844008B376A /* DniDateTimeUnit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +231,7 @@
 			files = (
 				54544EF61D949F9500130B47 /* dniDateTimeTests.swift in Sources */,
 				54697254223755AC008B376A /* dniDateTimeFormatterTests.swift in Sources */,
+				5469725A22376575008B376A /* DniDateTimeComponentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,15 +255,24 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -296,15 +317,24 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -337,7 +367,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = WY43EC959T;
 				DYLIB_COMPATIBILITY_VERSION = 1;

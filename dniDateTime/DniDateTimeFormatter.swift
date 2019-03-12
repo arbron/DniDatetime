@@ -22,7 +22,7 @@ public class DniDateTimeFormatter: Formatter {
             Full:       Pt:T:G:P
         */
     }
-    
+
     var useGahrtahvo = false
     var dateFormat = Style.medium
     var timeFormat = Style.medium
@@ -31,11 +31,11 @@ public class DniDateTimeFormatter: Formatter {
     public func string(from date: DniDateTime) -> String {
         var dateComponent = ""
         if dateFormat == .full {
-            dateComponent = "\(date.hahrtee) \(DniDateTime.Vailee(rawValue: date.vaileetee)!) \(date.yahrtee)"
+            dateComponent = "\(date.hahrtee) \(DniDateTimeUnit.Vailee(rawValue: date.vaileetee)!.name) \(date.yahrtee)"
         } else if dateFormat == .long {
             dateComponent = "\(date.hahrtee).\(date.vaileetee).\(date.yahrtee)"
         } else if dateFormat == .medium {
-            dateComponent = "\(DniDateTime.Vailee(rawValue: date.vaileetee)!) \(date.yahrtee)"
+            dateComponent = "\(DniDateTimeUnit.Vailee(rawValue: date.vaileetee)!.name) \(date.yahrtee)"
         } else if dateFormat == .short {
             dateComponent = "\(date.vaileetee).\(date.yahrtee)"
         }

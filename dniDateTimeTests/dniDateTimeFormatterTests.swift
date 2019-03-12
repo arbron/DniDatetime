@@ -17,11 +17,11 @@ class dniDateTimeFormatterTests: XCTestCase {
 
         formatter.dateFormat = .full
         formatter.timeFormat = .full
-        XCTAssertEqual("9876 leefo 1 0:0:0:0", formatter.string(from: time))
+        XCTAssertEqual("9876 Leefo 1 0:0:0:0", formatter.string(from: time))
         formatter.dateFormat = .long
         XCTAssertEqual("9876.1.1 0:0:0:0", formatter.string(from: time))
         formatter.dateFormat = .medium
-        XCTAssertEqual("leefo 1 0:0:0:0", formatter.string(from: time))
+        XCTAssertEqual("Leefo 1 0:0:0:0", formatter.string(from: time))
         formatter.dateFormat = .short
         XCTAssertEqual("1.1 0:0:0:0", formatter.string(from: time))
         formatter.dateFormat = .none

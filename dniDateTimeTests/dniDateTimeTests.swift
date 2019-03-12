@@ -57,5 +57,13 @@ class dniDateTimeTests: XCTestCase {
         let sixthCavern = DniDateTime(newYearsForHahr: 9659)
         XCTAssertEqual(sixthSurface, sixthCavern, "Sixth new years did not match.")
     }
-    
+
+    func testInitializers() {
+        let first = DniDateTime(newYearsForHahr: 5000)
+        let second = DniDateTime(DniDateTimeComponent(5000, type: .hahr))
+        let third = DniDateTime(withHahr: 5000, vaileetee: 1, yahrtee: 1, pahrtahvotee: 0, tahvotee: 0, gorahntee: 0, prorahntee: 0)
+        XCTAssertEqual(first, second)
+        XCTAssertEqual(first, third)
+    }
+
 }
