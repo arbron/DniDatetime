@@ -6,14 +6,12 @@
 //  Copyright © 2019 Jeff Hitchcock. All rights reserved.
 //
 
-import Foundation
-
 public enum DniDateTimeUnit: String, Codable {
     case prorahn, gorahn, tahvo, pahrtahvo, gahrtahvo, yahr, vailee, hahr
 }
 
-extension DniDateTimeUnit {
-    public var name: String {
+public extension DniDateTimeUnit {
+    var name: String {
         switch self {
         case .prorahn:
             return "Prorahn"
@@ -34,7 +32,7 @@ extension DniDateTimeUnit {
         }
     }
 
-    public var pluralName: String {
+    var pluralName: String {
         return "\(name)tee"
     }
 
@@ -90,8 +88,8 @@ extension DniDateTimeUnit {
     }
 }
 
-extension DniDateTimeUnit {
-    public enum Vailee: Int {
+public extension DniDateTimeUnit {
+    enum Vailee: Int {
         case leefo = 1, leebro, leesahn, leetar, leevot, leevofo, leevobro, leevosahn, leevotar, leenovoo
 
         public var name: String {

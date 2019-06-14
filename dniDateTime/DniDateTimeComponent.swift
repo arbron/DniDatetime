@@ -6,8 +6,6 @@
 //  Copyright © 2019 Jeff Hitchcock. All rights reserved.
 //
 
-import Foundation
-
 public struct DniDateTimeComponent {
     public let value: Double
     public let type: DniDateTimeUnit

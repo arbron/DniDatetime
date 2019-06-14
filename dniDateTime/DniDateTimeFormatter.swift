@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class DniDateTimeFormatter: Formatter {
+public final class DniDateTimeFormatter: Formatter {
     enum Style {
         case none, short, medium, long, full
         /* Date Formats
