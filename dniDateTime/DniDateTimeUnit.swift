@@ -78,10 +78,12 @@ public extension DniDateTimeUnit {
         switch self {
         case .prorahn, .gorahn, .pahrtahvo:
             return 25
-        case .tahvo, .gahrtahvo, .yahr:
+        case .tahvo, .gahrtahvo:
             return 5
-        case .vailee:
+        case .yahr:
             return 29
+        case .vailee:
+            return 10
         case .hahr:
             return Int.max
         }

@@ -9,7 +9,7 @@
 import Foundation
 
 public final class DniDateTimeFormatter: Formatter {
-    enum Style {
+    public enum Style {
         case none, short, medium, long, full
         /* Date Formats
             Short:
@@ -23,10 +23,10 @@ public final class DniDateTimeFormatter: Formatter {
         */
     }
 
-    var useGahrtahvo = false
-    var dateFormat = Style.medium
-    var timeFormat = Style.medium
-    var dateTimeSeperator = " "
+    public var useGahrtahvo = false
+    public var dateFormat = Style.full
+    public var timeFormat = Style.medium
+    public var dateTimeSeperator = " "
     
     public func string(from date: DniDateTime) -> String {
         var dateComponent = ""

@@ -46,22 +46,22 @@ public struct DniDateTime {
         return timeInProrahntee - Double(Int(timeInProrahntee))
     }
 
-    init() {
+    public init() {
         dateTime = Date()
     }
 
-    init(withDate date: Date) {
+    public init(withDate date: Date) {
         dateTime = date
     }
 
-    init(_ components: DniDateTimeComponent...) {
+    public init(_ components: DniDateTimeComponent...) {
         let addedComponents: DniDateTimeComponent = components.reduce(DniDateTimeComponent(0, type: .prorahn)) { $0 + $1 }
         let secondsTime = addedComponents.value.toSeconds
         let newDateTime = Date(timeIntervalSinceReferenceDate: secondsTime)
         self.init(withDate: newDateTime)
     }
 
-    init(withHahr hahrtee: Int,
+    public init(withHahr hahrtee: Int,
          vaileetee: Int,
          yahrtee: Int,
          pahrtahvotee: Int,
@@ -79,7 +79,7 @@ public struct DniDateTime {
         )
     }
 
-    init(newYearsForHahr hahrtee: Int) {
+    public init(newYearsForHahr hahrtee: Int) {
         self.init(withHahr: hahrtee,
                   vaileetee: 1,
                   yahrtee: 1,
@@ -89,7 +89,7 @@ public struct DniDateTime {
                   prorahntee: 0)
     }
 
-    init?(year: Int, month: Int, day: Int, hour: Int = 0, minute: Int = 0, second: Int = 0) {
+    public init?(year: Int, month: Int, day: Int, hour: Int = 0, minute: Int = 0, second: Int = 0) {
         var calendar = Calendar(identifier: Calendar.Identifier.gregorian)
         calendar.timeZone = TimeZone(identifier: "PST")!
         let components = DateComponents(calendar: calendar, timeZone: calendar.timeZone, year: year, month: month, day: day, hour: hour, minute: minute, second: second)
