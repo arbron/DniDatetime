@@ -42,6 +42,10 @@ public struct DniDateTime {
         return Int(timeInProrahntee / U.hahr.value) + U.hahr.min
     }
 
+    public var vaileeteeName: String {
+        return DniDateTimeUnit.Vailee(rawValue: self.vaileetee)?.name ?? ""
+    }
+
     private var fractional_prorahntee: Double {
         return timeInProrahntee - Double(Int(timeInProrahntee))
     }
