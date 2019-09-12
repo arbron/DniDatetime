@@ -26,6 +26,7 @@ public final class DniDateTimeFormatter: Formatter {
     public var useGahrtahvo = false
     public var dateFormat = Style.full
     public var timeFormat = Style.medium
+    public var dniNumbering = false
     public var dateTimeSeperator = " "
     
     public func string(from date: DniDateTime) -> String {

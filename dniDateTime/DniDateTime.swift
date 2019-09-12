@@ -65,13 +65,13 @@ public struct DniDateTime {
         self.init(withDate: newDateTime)
     }
 
-    public init(withHahr hahrtee: Int,
-         vaileetee: Int,
-         yahrtee: Int,
-         pahrtahvotee: Int,
-         tahvotee: Int,
-         gorahntee: Int,
-         prorahntee: Int) {
+    public init(withHahr hahrtee: Int = DniDateTimeUnit.hahr.min,
+         vaileetee: Int = DniDateTimeUnit.vailee.min,
+         yahrtee: Int = DniDateTimeUnit.yahr.min,
+         pahrtahvotee: Int = DniDateTimeUnit.pahrtahvo.min,
+         tahvotee: Int = DniDateTimeUnit.tahvo.min,
+         gorahntee: Int = DniDateTimeUnit.gorahn.min,
+         prorahntee: Int = DniDateTimeUnit.prorahn.min) {
         self.init(
             DniDateTimeComponent(hahrtee, type: .hahr),
             DniDateTimeComponent(vaileetee - DniDateTimeUnit.vailee.min, type: .vailee),
