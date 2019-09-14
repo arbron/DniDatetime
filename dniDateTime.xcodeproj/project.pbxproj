@@ -15,6 +15,9 @@
 		5469725622375844008B376A /* DniDateTimeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5469725522375844008B376A /* DniDateTimeUnit.swift */; };
 		54697258223762AE008B376A /* DniDateTimeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54697257223762AE008B376A /* DniDateTimeComponent.swift */; };
 		5469725A22376575008B376A /* DniDateTimeComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5469725922376575008B376A /* DniDateTimeComponentTests.swift */; };
+		54C317BA232C895D00D1E571 /* DniTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C317B9232C895D00D1E571 /* DniTimeInterval.swift */; };
+		54C317BC232C8AB300D1E571 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C317BB232C8AB300D1E571 /* Double+Extensions.swift */; };
+		54C317C8232C920000D1E571 /* DniTimeIntervalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C317C7232C920000D1E571 /* DniTimeIntervalTests.swift */; };
 		54D0542F1D9F07E90046A1B3 /* DniDateTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D0542E1D9F07E90046A1B3 /* DniDateTimeFormatter.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +43,9 @@
 		5469725522375844008B376A /* DniDateTimeUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DniDateTimeUnit.swift; sourceTree = "<group>"; };
 		54697257223762AE008B376A /* DniDateTimeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DniDateTimeComponent.swift; sourceTree = "<group>"; };
 		5469725922376575008B376A /* DniDateTimeComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DniDateTimeComponentTests.swift; sourceTree = "<group>"; };
+		54C317B9232C895D00D1E571 /* DniTimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DniTimeInterval.swift; sourceTree = "<group>"; };
+		54C317BB232C8AB300D1E571 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		54C317C7232C920000D1E571 /* DniTimeIntervalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DniTimeIntervalTests.swift; sourceTree = "<group>"; };
 		54D0542E1D9F07E90046A1B3 /* DniDateTimeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DniDateTimeFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,11 +90,13 @@
 			isa = PBXGroup;
 			children = (
 				54544EEA1D949F9500130B47 /* dniDateTime.h */,
-				54544EEB1D949F9500130B47 /* Info.plist */,
 				54544F011D949FBA00130B47 /* DniDateTime.swift */,
 				54697257223762AE008B376A /* DniDateTimeComponent.swift */,
 				54D0542E1D9F07E90046A1B3 /* DniDateTimeFormatter.swift */,
 				5469725522375844008B376A /* DniDateTimeUnit.swift */,
+				54C317B9232C895D00D1E571 /* DniTimeInterval.swift */,
+				54C317BB232C8AB300D1E571 /* Double+Extensions.swift */,
+				54544EEB1D949F9500130B47 /* Info.plist */,
 			);
 			path = dniDateTime;
 			sourceTree = "<group>";
@@ -96,9 +104,10 @@
 		54544EF41D949F9500130B47 /* dniDateTimeTests */ = {
 			isa = PBXGroup;
 			children = (
-				54544EF51D949F9500130B47 /* dniDateTimeTests.swift */,
 				5469725922376575008B376A /* DniDateTimeComponentTests.swift */,
 				54697253223755AC008B376A /* dniDateTimeFormatterTests.swift */,
+				54544EF51D949F9500130B47 /* dniDateTimeTests.swift */,
+				54C317C7232C920000D1E571 /* DniTimeIntervalTests.swift */,
 				54544EF71D949F9500130B47 /* Info.plist */,
 			);
 			path = dniDateTimeTests;
@@ -126,6 +135,7 @@
 				54544EE31D949F9500130B47 /* Frameworks */,
 				54544EE41D949F9500130B47 /* Headers */,
 				54544EE51D949F9500130B47 /* Resources */,
+				54C317BD232C8ADC00D1E571 /* Increment Build Number */,
 			);
 			buildRules = (
 			);
@@ -214,13 +224,36 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		54C317BD232C8ADC00D1E571 /* Increment Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Increment Build Number";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		54544EE21D949F9500130B47 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54C317BC232C8AB300D1E571 /* Double+Extensions.swift in Sources */,
 				54697258223762AE008B376A /* DniDateTimeComponent.swift in Sources */,
 				54544F021D949FBA00130B47 /* DniDateTime.swift in Sources */,
+				54C317BA232C895D00D1E571 /* DniTimeInterval.swift in Sources */,
 				54D0542F1D9F07E90046A1B3 /* DniDateTimeFormatter.swift in Sources */,
 				5469725622375844008B376A /* DniDateTimeUnit.swift in Sources */,
 			);
@@ -233,6 +266,7 @@
 				54544EF61D949F9500130B47 /* dniDateTimeTests.swift in Sources */,
 				54697254223755AC008B376A /* dniDateTimeFormatterTests.swift in Sources */,
 				5469725A22376575008B376A /* DniDateTimeComponentTests.swift in Sources */,
+				54C317C8232C920000D1E571 /* DniTimeIntervalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
