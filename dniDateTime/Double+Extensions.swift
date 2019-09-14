@@ -14,6 +14,9 @@ internal extension Double {
     // Difference between new years on Hahr 0 and 2001-01-01 00:00:00 UTC in Prorahn
     static let epochOffset = 218_784_575_046.51
 
-    var toSeconds: Double { return (self - Double.epochOffset) * Double.secondsInOneProrahn }
-    var toProrahntee: Double { return (self / Double.secondsInOneProrahn) + Double.epochOffset }
+    var toSecondsFromEpoch: Double { return (self - Double.epochOffset) * Double.secondsInOneProrahn }
+    var toProrahnteeFromEpoch: Double { return (self / Double.secondsInOneProrahn) + Double.epochOffset }
+
+    var toSeconds: Double { return self * Double.secondsInOneProrahn }
+    var toProrahntee: Double { return self / Double.secondsInOneProrahn }
 }

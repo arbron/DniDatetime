@@ -14,7 +14,7 @@ public struct DniDateTime {
     private let dateTime: Date
 
     private var timeInProrahntee: Double {
-        return dateTime.timeIntervalSinceReferenceDate.toProrahntee
+        return dateTime.timeIntervalSinceReferenceDate.toProrahnteeFromEpoch
     }
 
     public var prorahntee: Int {
@@ -60,7 +60,7 @@ public struct DniDateTime {
 
     public init(_ components: DniDateTimeComponent...) {
         let addedComponents: DniDateTimeComponent = components.reduce(DniDateTimeComponent(0, type: .prorahn)) { $0 + $1 }
-        let secondsTime = addedComponents.value.toSeconds
+        let secondsTime = addedComponents.value.toSecondsFromEpoch
         let newDateTime = Date(timeIntervalSinceReferenceDate: secondsTime)
         self.init(withDate: newDateTime)
     }
