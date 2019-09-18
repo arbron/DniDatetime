@@ -142,6 +142,33 @@
 			path = SwiftUI;
 			sourceTree = "<group>";
 		};
+		541609AE2331CF8F001BD6DE /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				54544F011D949FBA00130B47 /* DniDateTime.swift */,
+				54697257223762AE008B376A /* DniDateTimeComponent.swift */,
+				5469725522375844008B376A /* DniDateTimeUnit.swift */,
+				54C317B9232C895D00D1E571 /* DniTimeInterval.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		541609AF2331CF94001BD6DE /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				54D0542E1D9F07E90046A1B3 /* DniDateTimeFormatter.swift */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
+		541609B02331CF97001BD6DE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				54C317BB232C8AB300D1E571 /* Double+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		5417B5682331867100A90B34 /* dniDateTimeUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,13 +223,10 @@
 		54544EE91D949F9500130B47 /* dniDateTime */ = {
 			isa = PBXGroup;
 			children = (
+				541609B02331CF97001BD6DE /* Extensions */,
+				541609AF2331CF94001BD6DE /* Formatters */,
+				541609AE2331CF8F001BD6DE /* Types */,
 				54544EEA1D949F9500130B47 /* dniDateTime.h */,
-				54544F011D949FBA00130B47 /* DniDateTime.swift */,
-				54697257223762AE008B376A /* DniDateTimeComponent.swift */,
-				54D0542E1D9F07E90046A1B3 /* DniDateTimeFormatter.swift */,
-				5469725522375844008B376A /* DniDateTimeUnit.swift */,
-				54C317B9232C895D00D1E571 /* DniTimeInterval.swift */,
-				54C317BB232C8AB300D1E571 /* Double+Extensions.swift */,
 				54544EEB1D949F9500130B47 /* Info.plist */,
 			);
 			path = dniDateTime;
