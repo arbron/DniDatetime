@@ -6,34 +6,52 @@
 //  Copyright © 2019 Jeff Hitchcock. All rights reserved.
 //
 
-public enum DniDateTimeUnit: String, Codable {
+public enum DniDateTimeUnit: String, Codable, CaseIterable {
     case prorahn, gorahn, tahvo, pahrtahvo, gahrtahvo, yahr, vailee, hahr
 }
 
 public extension DniDateTimeUnit {
     var name: String {
         switch self {
-        case .prorahn:
-            return "Prorahn"
-        case .gorahn:
-            return "Gorahn"
-        case .tahvo:
-            return "Tahvo"
-        case .pahrtahvo:
-            return "Pahrtahvo"
-        case .gahrtahvo:
-            return "Gahrtahvo"
-        case .yahr:
-            return "Yahr"
-        case .vailee:
-            return "Vailee"
-        case .hahr:
-            return "Hahr"
+        case .prorahn: return "Prorahn"
+        case .gorahn: return "Gorahn"
+        case .tahvo: return "Tahvo"
+        case .pahrtahvo: return "Pahrtahvo"
+        case .gahrtahvo: return "Gahrtahvo"
+        case .yahr: return "Yahr"
+        case .vailee: return "Vailee"
+        case .hahr: return "Hahr"
         }
     }
 
     var pluralName: String {
         return "\(name)tee"
+    }
+
+    var shortName: String {
+        switch self {
+        case .prorahn: return "pro"
+        case .gorahn: return "gor"
+        case .tahvo: return "tah"
+        case .pahrtahvo: return "pahr"
+        case .gahrtahvo: return "gahr"
+        case .yahr: return "yahr"
+        case .vailee: return "vail"
+        case .hahr: return "hahr"
+        }
+    }
+
+    var abbreviatedName: String {
+        switch self {
+        case .prorahn: return "p"
+        case .gorahn: return "g"
+        case .tahvo: return "t"
+        case .pahrtahvo: return "pt"
+        case .gahrtahvo: return "gt"
+        case .yahr: return "y"
+        case .vailee: return "v"
+        case .hahr: return "h"
+        }
     }
 
     var value: Double {

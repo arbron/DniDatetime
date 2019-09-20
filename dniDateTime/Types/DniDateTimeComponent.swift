@@ -29,6 +29,19 @@ extension DniDateTimeComponent {
     private var prorahnteeValue: Double {
         return value * type.value
     }
+
+    /// Returns this value rounded to an integral value using "schoolbook rounding".
+    ///
+    /// - Returns: The nearest integral value, or, if two integral values are equally close,
+    ///     the integral value with greater magnitute.
+    public func rounded() -> DniDateTimeComponent {
+        return DniDateTimeComponent(value.rounded(), type: type)
+    }
+
+    /// Rounds this value to an integral value using "schoolbook rounding".
+    public mutating func round() {
+        self = self.rounded()
+    }
 }
 
 extension DniDateTimeComponent {
