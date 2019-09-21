@@ -18,6 +18,10 @@ public struct DniDateTimeComponent {
     public init(_ value: Int, type: DniDateTimeUnit) {
         self.init(Double(value), type: type)
     }
+
+    public init(convertSeconds seconds: TimeInterval, to type: DniDateTimeUnit) {
+        self = DniDateTimeComponent(seconds.toProrahntee, type: .prorahn).convert(to: type)
+    }
 }
 
 // Conversions

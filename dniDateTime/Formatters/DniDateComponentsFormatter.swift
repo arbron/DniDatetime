@@ -64,16 +64,6 @@ public final class DniDateComponentsFormatter: Formatter {
     /// The default value of this property is `false`.
     public var allowsFractionalUnits: Bool = false
 
-//    /// A Boolean value indicating whether to collapse the largest unit into smaller units
-//    /// when a certain threshhold is met.
-//    ///
-//    /// An example of when this property might apply is expressing 28 prorahntee worth of time. When
-//    /// this porperty is set to `true`, the formatted value would be "28p". When the value of this property
-//    /// is `false`, the formatted value would be "1t 3p".
-//    ///
-//    /// The default value of this property is `false`.
-//    public var collapsesLargestUnit: Bool = false
-
     // TODO: includesApproximationPhrase
     // TODO: includesTimeRemainingPhrase
 
@@ -193,7 +183,7 @@ public final class DniDateComponentsFormatter: Formatter {
 extension DniDateComponentsFormatter {
     fileprivate static var numberFormatter: DniNumberFormatter = {
         let formatter = DniNumberFormatter()
-        formatter.maximumFractionDigits = 2
+        formatter.roundingMode = .up
         return formatter
     }()
 
@@ -201,10 +191,6 @@ extension DniDateComponentsFormatter {
         let units = allowedUnits ?? DniDateTimeUnit.allCases
         return units.sorted { $0.value > $1.value }
     }
-
-    ///
-    ///
-    ///
 
     /// Takes a Prorahn value and converts it to an array of components allowed by `allowedUnits` with
     /// any appropriate fractional amounts if allowed.
@@ -216,14 +202,19 @@ extension DniDateComponentsFormatter {
 
         var workingInterval = interval
         let units = orderedAllowedUnits()
-        return units.compactMap {
+        var results: [DniDateTimeComponent] = units.compactMap {
             var component = DniDateTimeComponent(workingInterval, type: .prorahn).convert(to: $0)
+            guard component.value >= 1 else { return nil }
             if !allowsFractionalUnits || $0 != units.last {
                 component.round()
             }
             workingInterval -= component.convert(to: .prorahn).value
             return component.value > 0 ? component : nil
         }
+        if results.isEmpty, let smallestUnit = units.last {
+            results.append(DniDateTimeComponent(interval, type: smallestUnit))
+        }
+        return results
     }
 
     /// Merge and remove units to accompidate `maximumUnitCount`.
@@ -301,6 +292,8 @@ extension DniDateComponentsFormatter {
         case .short, .brief, .abbreviated: joiner = " "
         case .positional: joiner = ":"
         }
+
+        DniDateComponentsFormatter.numberFormatter.maximumFractionDigits = allowsFractionalUnits ? 2 : 0
 
         return try components.map {
             guard let formattedNumber = DniDateComponentsFormatter.numberFormatter.string(forNumber: Decimal($0.value)) else {

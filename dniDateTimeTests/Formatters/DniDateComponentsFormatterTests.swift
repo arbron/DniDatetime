@@ -10,6 +10,15 @@ import XCTest
 @testable import dniDateTime
 
 class DniDateComponentFormatterTests: XCTestCase {
+    func testGeneralFunctionality() {
+        let formatter = DniDateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        XCTAssertEqual(formatter.string(from: DniDateTimeComponent(convertSeconds: 30, to: .prorahn)), "\\")
+        XCTAssertEqual(formatter.string(from: DniDateTimeComponent(convertSeconds: 38, to: .prorahn)), "1:2")
+        XCTAssertEqual(formatter.string(from: DniDateTimeComponent(convertSeconds: 1, to: .prorahn )), "1")
+        XCTAssertEqual(formatter.string(from: DniDateTimeComponent(convertSeconds: 6, to: .prorahn )), "4")
+    }
+
     func testUnitPruning() {
         let formatter = DniDateComponentsFormatter()
         formatter.maximumUnitCount = 2
