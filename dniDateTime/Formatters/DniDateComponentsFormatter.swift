@@ -212,7 +212,7 @@ extension DniDateComponentsFormatter {
             return component.value > 0 ? component : nil
         }
         if results.isEmpty, let smallestUnit = units.last {
-            results.append(DniDateTimeComponent(interval, type: smallestUnit))
+            results.append(DniDateTimeComponent(interval, type: .prorahn).convert(to: smallestUnit))
         }
         return results
     }

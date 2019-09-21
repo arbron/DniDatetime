@@ -26,7 +26,7 @@ class DniDateComponentFormatterTests: XCTestCase {
 
         XCTAssertEqual(formatter.string(from: 19401), "1gt 1pt")
         formatter.allowsFractionalUnits = true
-        XCTAssertEqual(formatter.string(from: 19401), "1gt 1.55pt")
+        XCTAssertEqual(formatter.string(from: 19401), "1gt 1.56pt")
     }
 
     func testZeroFormattingBehavior() {
