@@ -17,6 +17,12 @@ class DniDateComponentFormatterTests: XCTestCase {
         XCTAssertEqual(formatter.string(from: DniDateTimeComponent(convertSeconds: 38, to: .prorahn)), "1:2")
         XCTAssertEqual(formatter.string(from: DniDateTimeComponent(convertSeconds: 1, to: .prorahn )), "1")
         XCTAssertEqual(formatter.string(from: DniDateTimeComponent(convertSeconds: 6, to: .prorahn )), "4")
+
+        XCTAssertEqual(formatter.string(from: DniDateTimeComponent(625, type: .prorahn)), "1:0:0")
+        XCTAssertEqual(formatter.string(from: DniDateTimeComponent(625.25, type: .prorahn)), "1:0:0")
+        XCTAssertEqual(formatter.string(from: DniDateTimeComponent(625.75, type: .prorahn)), "1:0:1")
+        XCTAssertEqual(formatter.string(from: DniDateTimeComponent(626, type: .prorahn)), "1:0:1")
+        XCTAssertEqual(formatter.string(from: DniDateTimeComponent(624.75, type: .prorahn)), "1:0:0")
     }
 
     func testUnitPruning() {
@@ -26,7 +32,7 @@ class DniDateComponentFormatterTests: XCTestCase {
 
         XCTAssertEqual(formatter.string(from: 19401), "1gt 1pt")
         formatter.allowsFractionalUnits = true
-        XCTAssertEqual(formatter.string(from: 19401), "1gt 1.56pt")
+        XCTAssertEqual(formatter.string(from: 19401), "1gt 1.55pt")
     }
 
     func testZeroFormattingBehavior() {

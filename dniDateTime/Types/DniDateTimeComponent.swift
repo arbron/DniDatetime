@@ -34,17 +34,20 @@ extension DniDateTimeComponent {
         return value * type.value
     }
 
-    /// Returns this value rounded to an integral value using "schoolbook rounding".
+    /// Returns this value rounded to an integral value using the specified rounding rule.
     ///
+    /// - Parameter rule: The rounding rule to use, the default value is "schoolbook rounding".
     /// - Returns: The nearest integral value, or, if two integral values are equally close,
     ///     the integral value with greater magnitute.
-    public func rounded() -> DniDateTimeComponent {
-        return DniDateTimeComponent(value.rounded(), type: type)
+    public func rounded(_ rule: FloatingPointRoundingRule = .toNearestOrAwayFromZero) -> DniDateTimeComponent {
+        return DniDateTimeComponent(value.rounded(rule), type: type)
     }
 
-    /// Rounds this value to an integral value using "schoolbook rounding".
-    public mutating func round() {
-        self = self.rounded()
+    /// Rounds this value to an integral value using the specified rounding rule..
+    ///
+    /// - Parameter rule: The rounding rule to use, the default value is "schoolbook rounding".
+    public mutating func round(_ rule: FloatingPointRoundingRule = .toNearestOrAwayFromZero) {
+        self = self.rounded(rule)
     }
 }
 

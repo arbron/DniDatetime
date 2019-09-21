@@ -47,7 +47,7 @@ public final class DniDateComponentsFormatter: Formatter {
     ///
     public func string(from prorahntee: Double) -> String? {
         let components = padWithZeroes(pruneUnits(createComponents(prorahntee)))
-        return try? formString(components)
+        return formString(components)
     }
 
     // MARK: Configuring the Formatter Options
@@ -173,17 +173,12 @@ public final class DniDateComponentsFormatter: Formatter {
         /// "0pt 1t 0g 0p" using the abbreviated style.
         case pad
     }
-
-    // MARK: Errors
-    public enum FormatterError: Error {
-        case numberFormattingError
-    }
 }
 
 extension DniDateComponentsFormatter {
     fileprivate static var numberFormatter: DniNumberFormatter = {
         let formatter = DniNumberFormatter()
-        formatter.roundingMode = .up
+        formatter.roundingMode = .nearest
         return formatter
     }()
 
@@ -204,9 +199,9 @@ extension DniDateComponentsFormatter {
         let units = orderedAllowedUnits()
         var results: [DniDateTimeComponent] = units.compactMap {
             var component = DniDateTimeComponent(workingInterval, type: .prorahn).convert(to: $0)
-            guard component.value >= 1 else { return nil }
-            if !allowsFractionalUnits || $0 != units.last {
-                component.round()
+            guard component.value >= 1 || (workingInterval < 1 && component.value > 0) else { return nil }
+            if $0 != units.last {
+                component.round(.towardZero)
             }
             workingInterval -= component.convert(to: .prorahn).value
             return component.value > 0 ? component : nil
@@ -224,10 +219,6 @@ extension DniDateComponentsFormatter {
         var keptComponents = Array(components.prefix(upTo: maxUnits))
 
         keptComponents[maxUnits - 1] = discardedComponents.reduce(keptComponents[maxUnits - 1], +)
-
-        if !allowsFractionalUnits {
-            keptComponents[maxUnits - 1].round()
-        }
 
         return keptComponents
     }
@@ -285,7 +276,9 @@ extension DniDateComponentsFormatter {
     ///
     /// - Parameter components: Components to use when forming the string.
     /// - Returns: Full string of values and units.
-    fileprivate func formString(_ components: [DniDateTimeComponent]) throws -> String {
+    fileprivate func formString(_ components: [DniDateTimeComponent]) -> String {
+        guard !components.isEmpty else { return "" }
+
         let joiner: String
         switch self.unitsStyle {
         case .spellOut, .full: joiner = ", "
@@ -294,29 +287,60 @@ extension DniDateComponentsFormatter {
         }
 
         DniDateComponentsFormatter.numberFormatter.maximumFractionDigits = allowsFractionalUnits ? 2 : 0
+        let allowedUnits = orderedAllowedUnits()
 
-        return try components.map {
-            guard let formattedNumber = DniDateComponentsFormatter.numberFormatter.string(forNumber: Decimal($0.value)) else {
-                throw DniDateComponentsFormatter.FormatterError.numberFormattingError
-            }
+        var lastRoundedUp = false
+        var stringComponents: [String] = components.reversed().map {
+            DniDateComponentsFormatter.numberFormatter.maximumIntegerDigits = $0.type == allowedUnits[0] ? 42 : 1
 
-            switch self.unitsStyle {
-            case .spellOut:
-                let writtenNumber = ""
-                let typeName = $0.value == 1 ? $0.type.name : $0.type.pluralName
-                return "\(writtenNumber) \(typeName)"
-            case .full:
-                let typeName = $0.value == 1 ? $0.type.name : $0.type.pluralName
-                return "\(formattedNumber) \(typeName)"
-            case .short:
-                return "\(formattedNumber) \($0.type.shortName)"
-            case .brief:
-                return "\(formattedNumber)\($0.type.shortName)"
-            case .abbreviated:
-                return "\(formattedNumber)\($0.type.abbreviatedName)"
-            case .positional:
-                return formattedNumber
+            let value = !lastRoundedUp ? $0.value : $0.value + 1
+            let formattedNumber = DniDateComponentsFormatter.numberFormatter.string(forNumber: Decimal(value),
+                                                                                    trackingOverflow: &lastRoundedUp)
+
+            return formStringElement(value, formattedNumber, $0.type)
+        }
+
+        // If the final component was rounded around, add another component if possible.
+        if lastRoundedUp && components[0].type != allowedUnits[0] {
+            var nextType: DniDateTimeUnit?
+            var index = allowedUnits.endIndex - 1
+            while index > allowedUnits.startIndex {
+                guard allowedUnits[index] != components[0].type else {
+                    nextType = allowedUnits[index - 1]
+                    break
+                }
+                index -= 1
             }
-        }.joined(separator: joiner)
+            if let type = nextType {
+                stringComponents.append(
+                    formStringElement(1, DniDateComponentsFormatter.numberFormatter.string(forNumber: 1), type)
+                )
+            }
+        }
+
+        return stringComponents.reversed().joined(separator: joiner)
+    }
+
+    ///
+    ///
+    ///
+    fileprivate func formStringElement(_ number: Double, _ formattedNumber: String, _ type: DniDateTimeUnit) -> String {
+        switch self.unitsStyle {
+        case .spellOut:
+            let writtenNumber = ""
+            let typeName = number == 1 ? type.name : type.pluralName
+            return "\(writtenNumber) \(typeName)"
+        case .full:
+            let typeName = number == 1 ? type.name : type.pluralName
+            return "\(formattedNumber) \(typeName)"
+        case .short:
+            return "\(formattedNumber) \(type.shortName)"
+        case .brief:
+            return "\(formattedNumber)\(type.shortName)"
+        case .abbreviated:
+            return "\(formattedNumber)\(type.abbreviatedName)"
+        case .positional:
+            return formattedNumber
+        }
     }
 }
